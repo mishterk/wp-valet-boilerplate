@@ -64,14 +64,13 @@ return [
 	],
 
 	/**
-	 * todo - test this
 	 * Configured for brew-installed MailHog.
 	 * @see http://localhost:8025/
 	 */
 	'smtp'  => [
 		'host'       => '0.0.0.0',
 		'port'       => 1025,
-		'encryption' => 'tls',
+		'encryption' => null,
 		'user'       => 'testuser',
 		'password'   => 'testpwd',
 		'from'       => 'Local Dev <email@localdev.com>',

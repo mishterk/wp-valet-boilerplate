@@ -79,13 +79,13 @@ if ( ! defined( 'PHPUNIT_RUNNING' ) ) {
 define( 'AUTOMATIC_UPDATER_DISABLED', true );
 
 if ( Config::get( 'smtp' ) ) {
-	define( 'WP_SMTP_HOST', Config::get( 'host' ) );
-	define( 'WP_SMTP_PORT', Config::get( 'port' ) );
-	define( 'WP_SMTP_ENCRYPTION', Config::get( 'encryption' ) );
-	define( 'WP_SMTP_USER', Config::get( 'user' ) );
-	define( 'WP_SMTP_PASSWORD', Config::get( 'password' ) );
-	define( 'WP_SMTP_FROM', Config::get( 'from' ) );
-	define( 'WP_SMTP_REPLYTO', Config::get( 'replyto' ) );
+	define( 'WP_SMTP_HOST', Config::get( 'smtp.host' ) );
+	define( 'WP_SMTP_PORT', Config::get( 'smtp.port' ) );
+	define( 'WP_SMTP_ENCRYPTION', Config::get( 'smtp.encryption' ) );
+	define( 'WP_SMTP_USER', Config::get( 'smtp.user' ) );
+	define( 'WP_SMTP_PASSWORD', Config::get( 'smtp.password' ) );
+	define( 'WP_SMTP_FROM', Config::get( 'smtp.from' ) );
+	define( 'WP_SMTP_REPLYTO', Config::get( 'smtp.replyto' ) );
 }
 
 // todo - consider these for config file

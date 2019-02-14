@@ -1,0 +1,8 @@
+.idea
+.vscode
+logs/*
+!.gitkeep
+wp/*
+wp-content/*
+vendor/*
+valetbp-config.php

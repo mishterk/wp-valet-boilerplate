@@ -64,7 +64,7 @@ class WPCLICommand extends \WP_CLI_Command {
 	 * @subcommand install-plugins
 	 */
 	public function install_plugins() {
-		if ( $plugins_to_install = Config::get( 'sync.plugins.install' ) ) {
+		if ( $plugins_to_install = Config::get( 'sync.plugins.activate' ) ) {
 			$plugins_to_install = implode( ' ', $plugins_to_install );
 			WP_CLI::runcommand( "plugin install $plugins_to_install" );
 		}

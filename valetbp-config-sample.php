@@ -33,18 +33,17 @@ return [
 		],
 	],
 
-	'sync' => [
-		'plugins' => [
-			'install'    => [ 'query-monitor', 'wp-smtp-config' ],
-			'activate'   => [ 'query-monitor', 'wp-smtp-config', 'wp-migrate-db-pro', 'wp-migrate-db-pro-cli' ],
-			'deactivate' => [],
-		],
-	],
-
 	'install' => [
 		'plugins' => [
 			'query-monitor',
 			'wp-smtp-config'
+		],
+	],
+
+	'sync' => [
+		'plugins' => [
+			'activate'   => [ 'query-monitor', 'wp-smtp-config', 'wp-migrate-db-pro', 'wp-migrate-db-pro-cli' ],
+			'deactivate' => [],
 		],
 	],
 

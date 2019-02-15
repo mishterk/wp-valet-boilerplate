@@ -21,7 +21,7 @@ Aside from the above-mentioned dependencies, this boilerplate is also geared tow
 
 #### Speeding up Composer
 
-Hate longs waits for Composer? Check out the [Prestissimo](https://github.com/hirak/prestissimo) package for parallel 
+Hate long waits for Composer? Check out the [Prestissimo](https://github.com/hirak/prestissimo) package for parallel 
 package installation.
 
 ## Getting Started

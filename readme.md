@@ -26,7 +26,10 @@ package installation.
 
 ## Getting Started
 
+- In your terminal, head to your Valet directory: 
+  `cd ~/path/to/valet`
 - Clone this puppy into a new project under your valet directory: `git clone https://github.com/mishterk/wp-valet-boilerplate my-new-project`
+- Move into the project directory: `cd my-new-project`
 - Create a local config file: `cp valetbp-config-sample.php valetbp-config.php`
 - Configure your project via `valetbp-config.php`
 - Run the installation: `php bin/install.php`

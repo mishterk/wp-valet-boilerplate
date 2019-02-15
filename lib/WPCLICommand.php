@@ -7,21 +7,23 @@ use WP_CLI;
 class WPCLICommand extends \WP_CLI_Command {
 
 	/**
-	 * Runs a full sync to get development inline with prod and ready for development work
+	 * Runs a full DB sync and local config to get the development installation up to date and ready for work
 	 */
-	public function sync_with_prod() {
-		$this->pull_prod_db();
-		$this->update_acf_license_key();
+	public function sync() {
+		$this->pull_db();
+		$this->register_acf();
 		$this->install_plugins();
 		$this->configure_dev_plugins();
 		WP_CLI::runcommand( 'rewrite flush' );
-		$this->log_me_in();
+		$this->login();
 	}
 
 	/**
 	 * Pulls the latest from production via the WP Migrate DB Pro plugin with CLI addon
+	 *
+	 * @subcommand pull-db
 	 */
-	public function pull_prod_db() {
+	public function pull_db() {
 		$url = Config::get( 'urls.prod.protocol' ) . '//' . Config::get( 'urls.prod.host' );
 		$key = Config::get( 'wpmdbpro.remote_key' );
 
@@ -45,9 +47,11 @@ class WPCLICommand extends \WP_CLI_Command {
 	}
 
 	/**
-	 * Ensures our ACF key is in the DB
+	 * Inserts the ACF license key from valetbp-config.php into the database and registers with ACF.
+	 *
+	 * @subcommand register-acf
 	 */
-	public function update_acf_license_key() {
+	public function register_acf() {
 		if ( $key = Config::get( 'acf.key' ) ) {
 			WP_CLI::runcommand( "eval 'function_exists(\"acf_pro_update_license\") and acf_pro_update_license(\"'$key'\");'" );
 			WP_CLI::success( 'ACF Pro license key stored and activated' );
@@ -55,7 +59,9 @@ class WPCLICommand extends \WP_CLI_Command {
 	}
 
 	/**
-	 * Installs plugins as per config
+	 * Installs plugins as defined in valetbp-config.php
+	 *
+	 * @subcommand install-plugins
 	 */
 	public function install_plugins() {
 		if ( $plugins_to_install = Config::get( 'plugins.install' ) ) {
@@ -65,7 +71,9 @@ class WPCLICommand extends \WP_CLI_Command {
 	}
 
 	/**
-	 * De/Activates plugins as per config
+	 * De/Activates plugins as defined in valetbp-config.php
+	 *
+	 * @subcommand configure-plugins
 	 */
 	public function configure_dev_plugins() {
 		if ( $plugins_to_activate = Config::get( 'plugins.activate' ) ) {
@@ -80,9 +88,12 @@ class WPCLICommand extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Logs the auth user into the site and opens the site in a new browser tab. Auth user is defined in
+	 * valetbp-config.php.
+	 *
 	 * @see https://aaemnnost.tv/wp-cli-commands/login/
 	 */
-	public function log_me_in() {
+	public function login() {
 		WP_CLI::log( 'Attempting to log you in...' );
 		$username = Config::get( 'auth.username' );
 		WP_CLI::runcommand( "login create $username --launch" );

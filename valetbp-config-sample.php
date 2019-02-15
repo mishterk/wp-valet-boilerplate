@@ -55,12 +55,9 @@ return [
 		'key' => '',
 	],
 
-	/**
-	 * todo: remote image loading via valet local driver
-	 */
 	'valet' => [
 		'local_driver' => [
-			'load_images_remotely' => true
+			'load_images_remotely' => true // todo
 		],
 		'secure'       => true,
 	],

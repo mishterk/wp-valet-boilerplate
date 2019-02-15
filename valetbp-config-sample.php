@@ -22,7 +22,7 @@ return [
 		'table_prefix' => 'wp_',
 	],
 
-	'urls'    => [
+	'urls' => [
 		'prod' => [
 			'protocol' => 'https:',
 			'host'     => 'example.com',
@@ -33,11 +33,19 @@ return [
 		],
 	],
 
-	// todo - add support for plugins to install during project installation
-	'plugins' => [
-		'install'    => [ 'query-monitor', 'wp-smtp-config' ],
-		'activate'   => [ 'query-monitor', 'wp-smtp-config', 'wp-migrate-db-pro', 'wp-migrate-db-pro-cli' ],
-		'deactivate' => [],
+	'sync' => [
+		'plugins' => [
+			'install'    => [ 'query-monitor', 'wp-smtp-config' ],
+			'activate'   => [ 'query-monitor', 'wp-smtp-config', 'wp-migrate-db-pro', 'wp-migrate-db-pro-cli' ],
+			'deactivate' => [],
+		],
+	],
+
+	'install' => [
+		'plugins' => [
+			'query-monitor',
+			'wp-smtp-config'
+		],
 	],
 
 	'wpmdbpro' => [
@@ -51,7 +59,7 @@ return [
 		'exclude_spam'       => true,
 	],
 
-	'acf'   => [
+	'acf' => [
 		'key' => '',
 	],
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This script will remove all work and the database. It will basically leave you with the boilerplate and the
+ * valetbp-config.php file.
+ */
+
 $config = require dirname( __DIR__ ) . '/valetbp-config.php';
 
 echo "Dropping the database" . PHP_EOL;

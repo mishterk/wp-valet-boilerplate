@@ -13,7 +13,7 @@ class WPCLICommand extends \WP_CLI_Command {
 		$this->pull_db();
 		$this->register_acf();
 		$this->install_plugins();
-		$this->configure_dev_plugins();
+		$this->toggle_plugins();
 		WP_CLI::runcommand( 'rewrite flush' );
 		$this->login();
 	}
@@ -64,7 +64,7 @@ class WPCLICommand extends \WP_CLI_Command {
 	 * @subcommand install-plugins
 	 */
 	public function install_plugins() {
-		if ( $plugins_to_install = Config::get( 'plugins.install' ) ) {
+		if ( $plugins_to_install = Config::get( 'sync.plugins.install' ) ) {
 			$plugins_to_install = implode( ' ', $plugins_to_install );
 			WP_CLI::runcommand( "plugin install $plugins_to_install" );
 		}
@@ -73,15 +73,15 @@ class WPCLICommand extends \WP_CLI_Command {
 	/**
 	 * De/Activates plugins as defined in valetbp-config.php
 	 *
-	 * @subcommand configure-plugins
+	 * @subcommand toggle-plugins
 	 */
-	public function configure_dev_plugins() {
-		if ( $plugins_to_activate = Config::get( 'plugins.activate' ) ) {
+	public function toggle_plugins() {
+		if ( $plugins_to_activate = Config::get( 'sync.plugins.activate' ) ) {
 			$plugins_to_activate = implode( ' ', $plugins_to_activate );
 			WP_CLI::runcommand( "plugin activate $plugins_to_activate" );
 		}
 
-		if ( $plugins_to_deactivate = Config::get( 'plugins.deactivate' ) ) {
+		if ( $plugins_to_deactivate = Config::get( 'sync.plugins.deactivate' ) ) {
 			$plugins_to_deactivate = implode( ' ', $plugins_to_deactivate );
 			WP_CLI::runcommand( "plugin deactivate $plugins_to_deactivate" );
 		}

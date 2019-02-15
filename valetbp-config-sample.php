@@ -6,6 +6,9 @@ return [
 		'title' => 'example title',
 	],
 
+	/**
+	 * This user data is used during site creation and is also used as part of the automatic login process.
+	 */
 	'auth' => [
 		'username' => 'admin',
 		'email'    => 'user@example.com',
@@ -22,7 +25,7 @@ return [
 		'table_prefix' => 'wp_',
 	],
 
-	'urls' => [
+	'urls'    => [
 		'prod' => [
 			'protocol' => 'https:',
 			'host'     => 'example.com',
@@ -33,6 +36,9 @@ return [
 		],
 	],
 
+	/**
+	 * Defines plugins to install and activate as part of the initial install process.
+	 */
 	'install' => [
 		'plugins' => [
 			'query-monitor',
@@ -40,7 +46,10 @@ return [
 		],
 	],
 
-	'sync' => [
+	/**
+	 * Defines plugins to install and activate along with plugins to deactivate during the `wp valetdb sync` command.
+	 */
+	'sync'    => [
 		'plugins' => [
 			'activate'   => [ 'query-monitor', 'wp-smtp-config', 'wp-migrate-db-pro', 'wp-migrate-db-pro-cli' ],
 			'deactivate' => [],

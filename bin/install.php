@@ -12,7 +12,7 @@ $exec_and_print = function ( $command ) use ( $verbose ) {
 	}
 };
 
-if ( $config['valet']['secure'] ) {
+if ( $config['site']['secure'] ) {
 	echo "Running 'valet secure' (this will take a few seconds)" . PHP_EOL;
 	$exec_and_print( 'valet secure' );
 }

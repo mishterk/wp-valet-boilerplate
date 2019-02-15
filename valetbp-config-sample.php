@@ -3,7 +3,8 @@
 return [
 
 	'site' => [
-		'title' => 'example title',
+		'title'  => 'example title',
+		'secure' => true,
 	],
 
 	/**
@@ -67,22 +68,23 @@ return [
 		'exclude_spam'       => true,
 	],
 
-	'acf' => [
+	'acf'            => [
 		'key' => '',
 	],
 
-	'valet' => [
-		'local_driver' => [
-			'load_images_remotely' => true // todo
-		],
-		'secure'       => true,
+	/**
+	 * Attempt to load uploads from remote domain when the file doesn't exist locally.
+	 * Set to FALSE to disable.
+	 */
+	'remote_uploads' => [
+		'uri_base' => '/wp-content/uploads/'
 	],
 
 	/**
 	 * Configured for brew-installed MailHog.
 	 * @see http://localhost:8025/
 	 */
-	'smtp'  => [
+	'smtp'           => [
 		'host'       => '0.0.0.0',
 		'port'       => 1025,
 		'encryption' => null,
@@ -95,7 +97,7 @@ return [
 	/**
 	 * Define log file paths
 	 */
-	'logs'  => [
+	'logs'           => [
 		'dev'   => dirname( __FILE__ ) . '/logs/dev.log',
 		'debug' => dirname( __FILE__ ) . '/logs/debug.log',
 	],

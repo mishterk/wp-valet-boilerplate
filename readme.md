@@ -6,9 +6,9 @@ people's preferences. Feel free to fork and mod to suit your own needs.
 
 ## Dependencies
 
-- Composer
-- Valet
-- Skills 
+- [Homebrew](https://brew.sh/)
+- [Composer](https://getcomposer.org/)
+- [Laravel Valet](https://laravel.com/docs/5.7/valet)
 
 ### Nice-to-haves
 
@@ -18,7 +18,11 @@ Aside from the above-mentioned dependencies, this boilerplate is also geared tow
 - [WP Migrate DB Pro WordPress plugin](https://deliciousbrains.com/wp-migrate-db-pro/)
 - [WP Migrate DB Pro WordPress plugin CLI Addon](https://deliciousbrains.com/wp-migrate-db-pro/doc/cli-addon/)
 - [Advanced Custom Fields Pro WordPress plugin](https://www.advancedcustomfields.com/pro/)
- 
+
+#### Speeding up Composer
+
+Hate longs waits for Composer? Check out the [Prestissimo](https://github.com/hirak/prestissimo) package for parallel 
+package installation.
 
 ## Getting Started
 

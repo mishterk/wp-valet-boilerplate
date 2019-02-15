@@ -2,7 +2,10 @@
 
 $config = require dirname( __DIR__ ) . '/valetbp-config.php';
 
-exec( 'valet secure' );
+if ( $config['valet']['secure'] ) {
+	echo "Running 'valet secure'…";
+	exec( 'valet secure' );
+}
 
 // install composer dependencies
 exec( 'composer install --prefer-dist', $output );

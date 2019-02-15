@@ -59,8 +59,8 @@ return [
 	'valet' => [
 		'local_driver' => [
 			'load_images_remotely' => true
-		]
-		//'secure' => false
+		],
+		'secure'       => true,
 	],
 
 	/**

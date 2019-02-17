@@ -85,8 +85,11 @@ return [
 	],
 
 	/**
-	 * Configured for brew-installed MailHog.
-	 * @see http://localhost:8025/
+	 * Configured for brew-installed MailHog running at http://localhost:8025/. These settings are set up as constants
+	 * in wp-config.php for use by the wp-smtp-config plugin.
+	 *
+	 * @see https://wordpress.org/plugins/wp-smtp-config/
+	 * @see https://pascalbaljetmedia.com/en/blog/setup-mailhog-with-laravel-valet
 	 */
 	'smtp'           => [
 		'host'       => '0.0.0.0',

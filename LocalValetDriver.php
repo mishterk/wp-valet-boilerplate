@@ -25,14 +25,14 @@ class LocalValetDriver extends WordPressValetDriver {
 	 * @return bool|false|string
 	 */
 	public function isStaticFile( $sitePath, $siteName, $uri ) {
-		$local_file_exists = parent::isStaticFile( $sitePath, $siteName, $uri );
-		$remote_fallback   = Config::get( 'remote_uploads' );
+		$local_file_found = parent::isStaticFile( $sitePath, $siteName, $uri );
+		$remote_fallback  = Config::get( 'remote_uploads' );
 
-		if ( $local_file_exists or ! $remote_fallback ) {
-			return $local_file_exists;
+		if ( $local_file_found or ! $remote_fallback ) {
+			return $local_file_found;
 		}
 
-		if ( strpos( $uri, $remote_fallback['uri_base'] ) === 0 ) {
+		if ( self::stringStartsWith( $uri, $remote_fallback['uri_base'] ) ) {
 			self::$try_remote = true;
 			$remote_host      = Config::get( 'urls.prod.protocol' ) . '//' . Config::get( 'urls.prod.host' );
 
@@ -65,6 +65,16 @@ class LocalValetDriver extends WordPressValetDriver {
 	 */
 	public function frontControllerPath( $sitePath, $siteName, $uri ) {
 		return parent::frontControllerPath( "$sitePath/wp", $siteName, $uri );
+	}
+
+	/**
+	 * @param string $string
+	 * @param string $starts_with
+	 *
+	 * @return bool
+	 */
+	private static function stringStartsWith( $string, $starts_with ) {
+		return strpos( $string, $starts_with ) === 0;
 	}
 
 }

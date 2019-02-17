@@ -50,7 +50,7 @@ package installation.
 
 ## WP CLI Commands
 
-### `wp valetbp sync`
+#### `wp valetbp sync`
 
 Carries out a full sync and local config based on settings in valetbp-config.php under sync. This includes:
 
@@ -61,22 +61,22 @@ Carries out a full sync and local config based on settings in valetbp-config.php
 - Flushing rewrite rules
 - Logging in
 
-### `wp valetbp login`
+#### `wp valetbp login`
 
 Generates a one-time login URL and opens that URL in the browser. The authenticated user will be that configured in valetbp-config.php under auth.username.
 
-### `wp valetbp pull-db`
+#### `wp valetbp pull-db`
 
 Pulls the DB via **WP Migrate DB Pro** with **CLI Addon**
 
-### ### `wp valetbp register-acf`
+#### `wp valetbp register-acf`
 
 Registers the ACF Pro key
 
-### ### `wp valetbp install-plugins`
+#### `wp valetbp install-plugins`
 
 Installs any plugins configured in valetbp-config.php under sync.plugins.activate
 
-### ### `wp valetbp toggle-plugins`
+#### `wp valetbp toggle-plugins`
 
 De/activates any plugins as per the valetbp-config.php under sync.plugins

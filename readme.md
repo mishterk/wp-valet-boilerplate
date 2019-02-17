@@ -2,7 +2,22 @@
 
 This is designed as a quick boilerplate for working in WordPress on Laravel Valet. This is fairly opinionated and that 
 really comes down to the fact that this was designed to aid my own existing workflow instead of trying to support other 
-people's preferences. Feel free to fork and mod to suit your own needs.  
+people's preferences. Feel free to fork and mod to suit your own needs.
+
+## Getting Started
+
+- Make sure you have installed all dependencies (see **dependencies** section further down)
+- In your terminal, head to your Valet directory:
+    - `cd ~/path/to/valet`
+- Clone this puppy into a new project under your valet directory: 
+    - `git clone https://github.com/mishterk/wp-valet-boilerplate my-new-project`
+- Move into the project directory: 
+    - `cd my-new-project`
+- Create a local config file: 
+    - `cp valetbp-config-sample.php valetbp-config.php`
+- Modify the config file accordingly.
+- Run the installation: 
+    - `php bin/install.php`  
 
 ## Dependencies
 
@@ -23,17 +38,3 @@ Aside from the above-mentioned dependencies, this boilerplate is also geared tow
 
 Hate long waits for Composer? Check out the [Prestissimo](https://github.com/hirak/prestissimo) package for parallel 
 package installation.
-
-## Getting Started
-
-- In your terminal, head to your Valet directory:
-    - `cd ~/path/to/valet`
-- Clone this puppy into a new project under your valet directory: 
-    - `git clone https://github.com/mishterk/wp-valet-boilerplate my-new-project`
-- Move into the project directory: 
-    - `cd my-new-project`
-- Create a local config file: 
-    - `cp valetbp-config-sample.php valetbp-config.php`
-- Modify the config file accordingly.
-- Run the installation: 
-    - `php bin/install.php`

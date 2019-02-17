@@ -41,8 +41,8 @@ return [
 	 * Defines plugins to install and activate as part of the initial install process.
 	 */
 	'install' => [
-		// the first theme listed will be activate on installation
 		'themes'  => [
+			// the first theme listed will be activate on installation
 			//'twentynineteen',
 		],
 		'plugins' => [
@@ -62,7 +62,7 @@ return [
 	],
 
 	'wpmdbpro' => [
-		'license_key'        => '', // todo - support this
+		//'license_key'        => '', // todo - support this
 		'remote_key'         => '',
 		'strings_to_replace' => [
 			'//example.com' => '//example.com.test',

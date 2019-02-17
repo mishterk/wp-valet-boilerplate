@@ -1,8 +1,17 @@
 # WP Valet Boilerplate
 
-This is designed as a quick boilerplate for working in WordPress on Laravel Valet. This is fairly opinionated and that 
-really comes down to the fact that this was designed to aid my own existing workflow instead of trying to support other 
-people's preferences. Feel free to fork and mod to suit your own needs.
+This is designed as a quick boilerplate for working in WordPress on Laravel Valet. It is primarily built to facilitate 
+my own workflow and provides the following: 
+
+- Array-based configuration from a single file
+- WordPress in a sub-directory
+- Remote image loading where a local version of the file isn't found
+- WP debug log moved outside of the wp-content directory
+- A development log and utility for dumping data to a separate log file while working
+- A set of WP-CLI commands under `wp valetbp` for easy synchronisation with remote sites
+
+Please note: this is a fairly opinionated set up and that really comes down to the fact that this was designed to aid my 
+own existing workflow. Feel free to fork and mod to suit your own needs.
 
 ## Getting Started
 
@@ -38,3 +47,36 @@ Aside from the above-mentioned dependencies, this boilerplate is also geared tow
 
 Hate long waits for Composer? Check out the [Prestissimo](https://github.com/hirak/prestissimo) package for parallel 
 package installation.
+
+## WP CLI Commands
+
+`wp valetbp sync`
+
+Carries out a full sync and local config based on settings in valetbp-config.php under sync. This includes:
+
+- Pulling the DB via WP Migrate DB Pro 
+- Registering ACF Pro serial key
+- Installing any dev-only plugins
+- De/Activating plugins to suit the development environment
+- Flushing rewrite rules
+- Logging in
+
+`wp valetbp login`
+
+Generates a one-time login URL and opens that URL in the browser. The authenticated user will be that configured in valetbp-config.php under auth.username.
+
+`wp valetbp pull-db`
+
+Pulls the DB via **WP Migrate DB Pro** with **CLI Addon**
+
+`wp valetbp register-acf`
+
+Registers the ACF Pro key
+
+`wp valetbp install-plugins`
+
+Installs any plugins configured in valetbp-config.php under sync.plugins.activate
+
+`wp valetbp toggle-plugins`
+
+De/activates any plugins as per the valetbp-config.php under sync.plugins

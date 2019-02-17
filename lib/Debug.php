@@ -72,17 +72,17 @@ class Debug {
 		fclose( $file );
 	}
 
-	static function query_logger( $query ) {
+	static function queryLogger( $query ) {
 		self::log( $query );
 
 		return $query;
 	}
 
-	static function start_logging_queries() {
+	static function startLoggingQueries() {
 		add_filter( 'query', [ __CLASS__, 'query_logger' ] );
 	}
 
-	static function stop_logging_queries() {
+	static function stopLoggingQueries() {
 		remove_filter( 'query', [ __CLASS__, 'query_logger' ] );
 	}
 

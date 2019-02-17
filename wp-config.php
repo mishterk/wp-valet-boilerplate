@@ -23,7 +23,7 @@ use WPValetBoilerplate\Debug;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-Config::set_config_by_path( __DIR__ . '/valetbp-config.php' );
+Config::setConfigFile( __DIR__ . '/valetbp-config.php' );
 Debug::$logfile = Config::get( 'logs.dev' );
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {

@@ -43,11 +43,11 @@ return [
 	'install' => [
 		// the first theme listed will be activate on installation
 		'themes'  => [
-			'twentynineteen',
+			//'twentynineteen',
 		],
 		'plugins' => [
 			'query-monitor',
-			'wp-smtp-config'
+			'wp-smtp-config',
 		],
 	],
 

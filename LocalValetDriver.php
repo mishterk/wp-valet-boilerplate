@@ -57,17 +57,6 @@ class LocalValetDriver extends WordPressValetDriver {
 	}
 
 	/**
-	 * @param string $sitePath
-	 * @param string $siteName
-	 * @param string $uri
-	 *
-	 * @return string
-	 */
-	public function frontControllerPath( $sitePath, $siteName, $uri ) {
-		return parent::frontControllerPath( "$sitePath/wp", $siteName, $uri );
-	}
-
-	/**
 	 * @param string $string
 	 * @param string $startsWith
 	 *

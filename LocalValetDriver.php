@@ -25,11 +25,11 @@ class LocalValetDriver extends WordPressValetDriver {
 	 * @return bool|false|string
 	 */
 	public function isStaticFile( $sitePath, $siteName, $uri ) {
-		$is_static   = parent::isStaticFile( $sitePath, $siteName, $uri );
-		$remote_load = Config::get( 'remote_uploads' );
+		$local_file_exists = parent::isStaticFile( $sitePath, $siteName, $uri );
+		$remote_load       = Config::get( 'remote_uploads' );
 
-		if ( $is_static or ! $remote_load ) {
-			return $is_static;
+		if ( $local_file_exists or ! $remote_load ) {
+			return $local_file_exists;
 		}
 
 		if ( strpos( $uri, $remote_load['uri_base'] ) === 0 ) {

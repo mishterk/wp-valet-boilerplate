@@ -35,6 +35,14 @@ $email = $config['auth']['email'];
 $exec_and_print( 'wp core download' );
 $exec_and_print( "wp core install --url='$url' --title='$title' --admin_user='$user' --admin_password='$pass' --admin_email='$email' --skip-email" );
 
+if ( $config['install']['themes'] ) {
+	echo "Downloading and installing initial themes" . PHP_EOL;
+	$themes       = implode( ' ', $config['install']['themes'] );
+	$active_theme = $config['install']['themes'][0];
+	$exec_and_print( "wp theme install $themes" );
+	$exec_and_print( "wp theme activate $active_theme" );
+}
+
 if ( $config['install']['plugins'] ) {
 	echo "Downloading and installing initial plugins" . PHP_EOL;
 	$plugins = implode( ' ', $config['install']['plugins'] );

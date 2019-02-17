@@ -41,6 +41,10 @@ return [
 	 * Defines plugins to install and activate as part of the initial install process.
 	 */
 	'install' => [
+		// the first theme listed will be activate on installation
+		'themes'  => [
+			'twentynineteen',
+		],
 		'plugins' => [
 			'query-monitor',
 			'wp-smtp-config'

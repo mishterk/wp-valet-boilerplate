@@ -11,6 +11,15 @@ class WPCLICommand extends \WP_CLI_Command {
 	 */
 	public function sync() {
 		$this->pull_db();
+		$this->post_sync();
+	}
+
+	/**
+	 * Runs all post-sync tasks. Useful where a manual DB pull has been
+	 *
+	 * @subcommand post-sync
+	 */
+	public function post_sync(  ) {
 		$this->register_acf();
 		$this->install_plugins();
 		$this->toggle_plugins();

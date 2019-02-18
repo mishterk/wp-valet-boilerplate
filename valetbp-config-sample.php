@@ -56,7 +56,13 @@ return [
 	 */
 	'sync'    => [
 		'plugins' => [
-			'activate'   => [ 'query-monitor', 'wp-smtp-config', 'wp-migrate-db-pro', 'wp-migrate-db-pro-cli' ],
+			'activate'   => [
+				'query-monitor',
+				'wp-smtp-config',
+				'wp-migrate-db-pro',
+				'wp-migrate-db-pro-cli',
+				'log-emails',
+			],
 			'deactivate' => [],
 		],
 	],

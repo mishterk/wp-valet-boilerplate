@@ -61,6 +61,10 @@ Carries out a full sync and local config based on settings in valetbp-config.php
 - Flushing rewrite rules
 - Logging in
 
+#### `wp valetbp post-sync`
+
+Carries out all post database sync tasks listed in the `sync` command
+
 #### `wp valetbp login`
 
 Generates a one-time login URL and opens that URL in the browser. The authenticated user will be that configured in valetbp-config.php under auth.username.

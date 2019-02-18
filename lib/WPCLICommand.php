@@ -27,7 +27,7 @@ class WPCLICommand extends \WP_CLI_Command {
 		$url = Config::get( 'urls.prod.protocol' ) . '//' . Config::get( 'urls.prod.host' );
 		$key = Config::get( 'wpmdbpro.remote_key' );
 
-		$command = "migratedb pull $url $key";
+		$command = "migratedb pull $url '$key''";
 
 		if ( $replacements = Config::get( 'wpmdbpro.strings_to_replace' ) ) {
 			$command .= ' --find="' . implode( ',', array_keys( $replacements ) ) . '"';

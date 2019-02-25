@@ -19,7 +19,7 @@ class WPCLICommand extends \WP_CLI_Command {
 	 *
 	 * @subcommand post-sync
 	 */
-	public function post_sync(  ) {
+	public function post_sync() {
 		$this->register_acf();
 		$this->install_plugins();
 		$this->toggle_plugins();
@@ -73,9 +73,16 @@ class WPCLICommand extends \WP_CLI_Command {
 	 * @subcommand install-plugins
 	 */
 	public function install_plugins() {
-		if ( $plugins_to_install = Config::get( 'sync.plugins.activate' ) ) {
-			$plugins_to_install = implode( ' ', $plugins_to_install );
-			WP_CLI::runcommand( "plugin install $plugins_to_install" );
+		$plugins_to_install = Config::get( 'sync.plugins.activate', [] );
+
+		foreach ( $plugins_to_install as $plugin ) {
+			if ( is_array( $plugin ) ) {
+				if ( ! $plugin['src'] ) {
+					continue;
+				}
+				$plugin = $plugin['src'];
+			}
+			WP_CLI::runcommand( "plugin install $plugin" );
 		}
 	}
 
@@ -86,12 +93,14 @@ class WPCLICommand extends \WP_CLI_Command {
 	 */
 	public function toggle_plugins() {
 		if ( $plugins_to_activate = Config::get( 'sync.plugins.activate' ) ) {
-			$plugins_to_activate = implode( ' ', $plugins_to_activate );
+			$plugins_to_activate = implode( ' ', $this->get_plugin_slugs( $plugins_to_activate ) );
 			WP_CLI::runcommand( "plugin activate $plugins_to_activate" );
 		}
 
+		WP_CLI::runcommand( 'login install --activate --yes' );
+
 		if ( $plugins_to_deactivate = Config::get( 'sync.plugins.deactivate' ) ) {
-			$plugins_to_deactivate = implode( ' ', $plugins_to_deactivate );
+			$plugins_to_deactivate = implode( ' ', $this->get_plugin_slugs( $plugins_to_deactivate ) );
 			WP_CLI::runcommand( "plugin deactivate $plugins_to_deactivate" );
 		}
 	}
@@ -106,6 +115,37 @@ class WPCLICommand extends \WP_CLI_Command {
 		WP_CLI::log( 'Attempting to log you in...' );
 		$username = Config::get( 'auth.username' );
 		WP_CLI::runcommand( "login create $username --launch" );
+	}
+
+	/**
+	 * Gets an array of just the plugin slugs for de/activation
+	 *
+	 * @param array $plugins_array
+	 *
+	 * @return array
+	 */
+	private function get_plugin_slugs( array $plugins_array ) {
+		$plugins_array = array_map( [ $this, 'format_plugin' ], $plugins_array );
+		$plugins_array = wp_list_pluck( $plugins_array, 'slug' );
+
+		return $plugins_array;
+	}
+
+	/**
+	 * Expands plugin array item to an expected array format containing the 'slug' and 'src' keys.
+	 *
+	 * @param array|string $plugin
+	 *
+	 * @return array
+	 */
+	private function format_plugin( $plugin ) {
+		if ( is_string( $plugin ) ) {
+			$slug           = $plugin;
+			$plugin         = [];
+			$plugin['slug'] = $plugin['src'] = $slug;
+		}
+
+		return $plugin;
 	}
 
 }

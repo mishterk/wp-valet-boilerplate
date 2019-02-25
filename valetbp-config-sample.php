@@ -53,15 +53,20 @@ return [
 
 	/**
 	 * Defines plugins to install and activate along with plugins to deactivate during the `wp valetdb sync` command.
+	 * If a string is provided, it is treated as the WordPress.org slug. If any other src is needed here, use an array
+	 * with the 'slug' and 'src' keys.
+	 *
+	 * If 'src' => FALSE, the plugin will be skipped from installation. This is useful if the wp plugin install command
+	 * results in an error where a plugin isn't available via WordPress.org.
 	 */
 	'sync'     => [
 		'plugins' => [
 			'activate'   => [
 				'query-monitor',
 				'wp-smtp-config',
-				'wp-migrate-db-pro',
-				'wp-migrate-db-pro-cli',
 				'log-emails',
+				[ 'slug' => 'wp-migrate-db-pro', 'src' => false ],
+				[ 'slug' => 'wp-migrate-db-pro-cli', 'src' => false ],
 			],
 			'deactivate' => [],
 		],

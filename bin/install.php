@@ -26,6 +26,11 @@ file_put_contents( $composer_file_path, $composer_file_content );
 echo "Installing Composer dependencies" . PHP_EOL;
 $exec_and_print( 'composer install --prefer-dist' );
 
+if ( $wpdbpro_license_key = $config['wpmdbpro']['license_key'] ) {
+	echo "Adding wp-config.php constants" . PHP_EOL;
+	$exec_and_print( "wp config set WPMDB_LICENCE '$wpdbpro_license_key' --add" );
+}
+
 echo "Creating the database" . PHP_EOL;
 $db_user = $config['db']['user'];
 $db_name = $config['db']['name'];

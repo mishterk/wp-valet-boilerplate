@@ -79,7 +79,7 @@ return [
 	 * @see https://deliciousbrains.com/wp-migrate-db-pro/doc/installing-via-composer/
 	 */
 	'wpmdbpro' => [
-		//'license_key'        => '', // todo - support this
+		'license_key'        => '',
 		'composer_api_key'   => '',
 		'remote_key'         => '',
 		'strings_to_replace' => [

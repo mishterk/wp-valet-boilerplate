@@ -109,6 +109,7 @@ if ( Config::get( 'google_maps.api_key' ) ) {
 //	\PDK\Debug::log( get_defined_vars() );
 //}
 
+define( 'WPMDB_LICENCE', '' );
 
 /* That's all, stop editing! Happy blogging. */
 

@@ -6,7 +6,10 @@
       "email": "phil@philkurth.com.au"
     }
   ],
-  "require": {},
+  "require": {
+    "deliciousbrains-plugin/wp-migrate-db-pro": "*",
+    "deliciousbrains-plugin/wp-migrate-db-pro-cli": "*"
+  },
   "require-dev": {
     "aaemnnosttv/wp-cli-login-command": "^1.3",
     "aaemnnosttv/wp-cli-login-server": "^1.2"
@@ -15,5 +18,11 @@
     "psr-4": {
       "WPValetBoilerplate\\": "lib"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.deliciousbrains.com/{COMPOSER_API_KEY}"
+    }
+  ]
 }

@@ -17,6 +17,12 @@ if ( $config['site']['secure'] ) {
 	$exec_and_print( 'valet secure' );
 }
 
+echo "Replacing {COMPOSER_API_KEY} in composer.json with actual key from config" . PHP_EOL;
+$composer_file_path    = dirname( __DIR__ ) . '/composer.json';
+$composer_file_content = file_get_contents( $composer_file_path );
+$composer_file_content = str_replace( '{COMPOSER_API_KEY}', $config['wpmdbpro']['composer_api_key'], $composer_file_content );
+file_put_contents( $composer_file_path, $composer_file_content );
+
 echo "Installing Composer dependencies" . PHP_EOL;
 $exec_and_print( 'composer install --prefer-dist' );
 

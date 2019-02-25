@@ -26,7 +26,7 @@ return [
 		'table_prefix' => 'wp_',
 	],
 
-	'urls'    => [
+	'urls'     => [
 		'prod' => [
 			'protocol' => 'https:',
 			'host'     => 'example.com',
@@ -40,7 +40,7 @@ return [
 	/**
 	 * Defines plugins to install and activate as part of the initial install process.
 	 */
-	'install' => [
+	'install'  => [
 		'themes'  => [
 			// the first theme listed will be activate on installation
 			//'twentynineteen',
@@ -54,7 +54,7 @@ return [
 	/**
 	 * Defines plugins to install and activate along with plugins to deactivate during the `wp valetdb sync` command.
 	 */
-	'sync'    => [
+	'sync'     => [
 		'plugins' => [
 			'activate'   => [
 				'query-monitor',
@@ -67,8 +67,15 @@ return [
 		],
 	],
 
+	/**
+	 * WP Migrate DB Pro
+	 *
+	 * This is being installed using Composer and will need a composer API key in order for that to happen.
+	 * @see https://deliciousbrains.com/wp-migrate-db-pro/doc/installing-via-composer/
+	 */
 	'wpmdbpro' => [
 		//'license_key'        => '', // todo - support this
+		'composer_api_key'   => '',
 		'remote_key'         => '',
 		'strings_to_replace' => [
 			'//example.com' => '//example.com.test',

@@ -18,6 +18,13 @@ class LocalValetDriver extends WordPressValetDriver {
 	private static $tryRemoteFallback = false;
 
 	/**
+	 * Using the constructor
+	 */
+	public function __construct() {
+		self::addDevelopmentFlashToDocument();
+	}
+
+	/**
 	 * @param string $sitePath
 	 * @param string $siteName
 	 * @param string $uri
@@ -64,6 +71,20 @@ class LocalValetDriver extends WordPressValetDriver {
 	 */
 	private static function stringStartsWith( $string, $startsWith ) {
 		return strpos( $string, $startsWith ) === 0;
+	}
+
+	/**
+	 * Using PHP's shutdown function, we append a small HTML flash at the end of the document to indicate we are in
+     * our development environment
+	 */
+	private static function addDevelopmentFlashToDocument() {
+		register_shutdown_function( function () {
+			?>
+            <div style="background:green; font-weight: bold; padding: 0.25em 0.25em; line-height:1; position: fixed; z-index: 99999999999999; top:0; left: 0; color: white; font-size:9px;">
+                DEVELOPMENT
+            </div>
+			<?php
+		} );
 	}
 
 }

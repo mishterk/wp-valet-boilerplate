@@ -117,6 +117,12 @@ return [
 		'password'   => 'testpwd',
 		'from'       => 'Local Dev <email@localdev.com>',
 		'replyto'    => 'Local Dev <email@localdev.com>',
+		'test'       => [
+			'to'          => 'test@email.com',
+			'subject'     => 'SMTP Test',
+			'message'     => 'If you received this email it means you have configured SMTP correctly on your WordPress website.',
+			'mailhog_url' => 'http://localhost:8025/',
+		]
 	],
 
 	/**

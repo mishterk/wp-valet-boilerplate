@@ -84,3 +84,7 @@ Installs any plugins configured in valetbp-config.php under sync.plugins.activat
 #### `wp valetbp toggle-plugins`
 
 De/activates any plugins as per the valetbp-config.php under sync.plugins
+
+#### `wp valetbp test-smtp`
+
+Fires a test email via `wp_mail()` and opens up Mailhog in a browser for review

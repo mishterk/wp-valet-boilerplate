@@ -25,6 +25,7 @@ class WPCLICommand extends \WP_CLI_Command {
 		$this->toggle_plugins();
 		WP_CLI::runcommand( 'rewrite flush' );
 		$this->login();
+		$this->test_smtp();
 	}
 
 	/**
@@ -105,6 +106,18 @@ class WPCLICommand extends \WP_CLI_Command {
 		if ( $plugins_to_deactivate = Config::get( 'sync.plugins.deactivate' ) ) {
 			$plugins_to_deactivate = implode( ' ', $this->get_plugin_slugs( $plugins_to_deactivate ) );
 			WP_CLI::runcommand( "plugin deactivate $plugins_to_deactivate" );
+		}
+	}
+
+	/**
+	 * Fires a test email message using wp_mail and opens up Mailhog in a browser window.
+	 *
+	 * @subcommand test-smtp
+	 */
+	public function test_smtp() {
+		if ( $test = Config::get( 'smtp.test' ) ) {
+			WP_CLI::runcommand( "eval 'wp_mail( \"{$test['to']}\", \"{$test['subject']}\", \"{$test['message']}\" );'" );
+			exec( "open '{$test['mailhog_url']}'" );
 		}
 	}
 

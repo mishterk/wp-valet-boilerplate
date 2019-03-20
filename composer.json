@@ -22,7 +22,7 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "https://composer.deliciousbrains.com/{COMPOSER_API_KEY}"
+      "url": "https://composer.deliciousbrains.com"
     }
   ]
 }

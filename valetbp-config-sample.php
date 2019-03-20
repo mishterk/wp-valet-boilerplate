@@ -80,7 +80,6 @@ return [
 	 */
 	'wpmdbpro' => [
 		'license_key'        => '',
-		'composer_api_key'   => '',
 		'remote_key'         => '',
 		'strings_to_replace' => [
 			'//example.com' => '//example.com.test',

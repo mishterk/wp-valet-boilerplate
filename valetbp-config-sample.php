@@ -3,7 +3,7 @@
 return [
 
 	'site' => [
-		'title'  => 'example title',
+		'title' => 'example title',
 		'secure' => true,
 	],
 
@@ -12,36 +12,36 @@ return [
 	 */
 	'auth' => [
 		'username' => 'admin',
-		'email'    => 'user@example.com',
+		'email' => 'user@example.com',
 		'password' => 'password',
 	],
 
 	'db' => [
-		'name'         => 'example_db_name',
-		'user'         => 'root',
-		'password'     => '',
-		'host'         => 'localhost',
-		'charset'      => 'utf8',
-		'collate'      => '',
+		'name' => 'example_db_name',
+		'user' => 'root',
+		'password' => '',
+		'host' => 'localhost',
+		'charset' => 'utf8',
+		'collate' => '',
 		'table_prefix' => 'wp_',
 	],
 
-	'urls'     => [
+	'urls' => [
 		'prod' => [
 			'protocol' => 'https:',
-			'host'     => 'example.com',
+			'host' => 'example.com',
 		],
-		'dev'  => [
+		'dev' => [
 			'protocol' => 'https:',
-			'host'     => 'example.com.test',
+			'host' => 'example.com.test',
 		],
 	],
 
 	/**
 	 * Defines plugins to install and activate as part of the initial install process.
 	 */
-	'install'  => [
-		'themes'  => [
+	'install' => [
+		'themes' => [
 			// the first theme listed will be activate on installation
 			//'twentynineteen',
 		],
@@ -59,9 +59,9 @@ return [
 	 * If 'src' => FALSE, the plugin will be skipped from installation. This is useful if the wp plugin install command
 	 * results in an error where a plugin isn't available via WordPress.org.
 	 */
-	'sync'     => [
+	'sync' => [
 		'plugins' => [
-			'activate'   => [
+			'activate' => [
 				'query-monitor',
 				'wp-smtp-config',
 				'log-emails',
@@ -79,17 +79,17 @@ return [
 	 * @see https://deliciousbrains.com/wp-migrate-db-pro/doc/installing-via-composer/
 	 */
 	'wpmdbpro' => [
-		'license_key'        => '',
-		'remote_key'         => '',
+		'license_key' => '',
+		'remote_key' => '',
 		'strings_to_replace' => [
 			'//example.com' => '//example.com.test',
-			'/remote/path'  => '/Users/system_user_name/Sites/valet/example.com',
+			'/remote/path' => '/Users/SYSTEM_USERNAME/Sites/valet/example.com',
 		],
-		'tables_to_migrate'  => [],
-		'exclude_spam'       => true,
+		'tables_to_migrate' => [],
+		'exclude_spam' => true,
 	],
 
-	'acf'            => [
+	'acf' => [
 		'key' => '',
 	],
 
@@ -108,18 +108,18 @@ return [
 	 * @see https://wordpress.org/plugins/wp-smtp-config/
 	 * @see https://pascalbaljetmedia.com/en/blog/setup-mailhog-with-laravel-valet
 	 */
-	'smtp'           => [
-		'host'       => '0.0.0.0',
-		'port'       => 1025,
+	'smtp' => [
+		'host' => '0.0.0.0',
+		'port' => 1025,
 		'encryption' => null,
-		'user'       => 'testuser',
-		'password'   => 'testpwd',
-		'from'       => 'Local Dev <email@localdev.com>',
-		'replyto'    => 'Local Dev <email@localdev.com>',
-		'test'       => [
-			'to'          => 'test@email.com',
-			'subject'     => 'SMTP Test',
-			'message'     => 'If you received this email it means you have configured SMTP correctly on your WordPress website.',
+		'user' => 'testuser',
+		'password' => 'testpwd',
+		'from' => 'Local Dev <email@localdev.com>',
+		'replyto' => 'Local Dev <email@localdev.com>',
+		'test' => [
+			'to' => 'test@email.com',
+			'subject' => 'SMTP Test',
+			'message' => 'If you received this email it means you have configured SMTP correctly on your WordPress website.',
 			'mailhog_url' => 'http://localhost:8025/',
 		]
 	],
@@ -127,8 +127,8 @@ return [
 	/**
 	 * Define log file paths
 	 */
-	'logs'           => [
-		'dev'   => dirname( __FILE__ ) . '/logs/dev.log',
+	'logs' => [
+		'dev' => dirname( __FILE__ ) . '/logs/dev.log',
 		'debug' => dirname( __FILE__ ) . '/logs/debug.log',
 	],
 

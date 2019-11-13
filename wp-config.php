@@ -18,8 +18,10 @@
  * @package WordPress
  */
 
+
 use WPValetBoilerplate\Config;
 use WPValetBoilerplate\Debug;
+
 
 require_once __DIR__ . '/vendor/autoload.php';
 

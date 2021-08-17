@@ -134,6 +134,15 @@ class WPCLICommand extends \WP_CLI_Command {
 	}
 
 	/**
+	 * Creates an admin user using the credentials listed in the config.
+	 *
+	 * @subcommand create-admin-user
+	 */
+	public function create_admin_user() {
+		WP_CLI::runcommand( sprintf( "user create %s %s --role=administrator --user_pass=%s", Config::get( 'auth.username' ), Config::get( 'auth.email' ), Config::get( 'auth.password' ), ) );
+	}
+
+	/**
 	 * Gets an array of just the plugin slugs for de/activation
 	 *
 	 * @param array $plugins_array

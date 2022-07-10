@@ -7,11 +7,7 @@
     }
   ],
   "require": {
-    "deliciousbrains-plugin/wp-migrate-db-pro": "*",
-    "deliciousbrains-plugin/wp-migrate-db-pro-cli": "*",
-    "deliciousbrains-plugin/wp-migrate-db-pro-media-files": "*",
-    "deliciousbrains-plugin/wp-migrate-db-pro-multisite-tools": "*",
-    "deliciousbrains-plugin/wp-migrate-db-pro-theme-plugin-files": "*"
+    "deliciousbrains-plugin/wp-migrate-db-pro": "*"
   },
   "require-dev": {
     "aaemnnosttv/wp-cli-login-command": "^1.3",

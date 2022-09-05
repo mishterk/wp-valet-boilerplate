@@ -34,7 +34,7 @@ class WPCLICommand extends \WP_CLI_Command {
 	 * @subcommand pull-db
 	 */
 	public function pull_db() {
-		$plugins_needed_for_sync = [ 'wp-migrate-db-pro', 'wp-migrate-db-pro-cli' ];
+		$plugins_needed_for_sync = [ 'wp-migrate-db-pro' ];
 		WP_CLI::runcommand( 'plugin activate ' . implode( ' ', $plugins_needed_for_sync ) );
 
 		$url = Config::get( 'urls.prod.protocol' ) . '//' . Config::get( 'urls.prod.host' );

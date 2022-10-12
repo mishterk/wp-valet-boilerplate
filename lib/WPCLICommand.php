@@ -128,6 +128,7 @@ class WPCLICommand extends \WP_CLI_Command {
 	 * @see https://aaemnnost.tv/wp-cli-commands/login/
 	 */
 	public function login() {
+		WP_CLI::runcommand('plugin activate wp-cli-login-server');
 		WP_CLI::log( 'Attempting to log you in...' );
 		$username = Config::get( 'auth.username' );
 		WP_CLI::runcommand( "login create $username --launch" );

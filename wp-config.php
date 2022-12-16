@@ -63,7 +63,7 @@ $home_url = Config::get( 'urls.dev.protocol' ) . '//' . Config::get( 'urls.dev.h
 define( 'WP_HOME', $home_url );
 define( 'WP_SITEURL', "$home_url/wp" );
 defined( 'WP_CONTENT_DIR' ) or define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
-defined( 'WP_CONTENT_URL' ) or define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
+defined( 'WP_CONTENT_URL' ) or define( 'WP_CONTENT_URL', Config::get( 'urls.dev.protocol' ) . '//' . $_SERVER['HTTP_HOST'] . '/wp-content' );
 
 defined( 'WP_DEBUG' ) or define( 'WP_DEBUG', true );
 defined( 'WP_DEBUG_DISPLAY' ) or define( 'WP_DEBUG_DISPLAY', false );

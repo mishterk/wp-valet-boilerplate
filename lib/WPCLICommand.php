@@ -96,16 +96,36 @@ class WPCLICommand extends \WP_CLI_Command {
 	 * @subcommand toggle-plugins
 	 */
 	public function toggle_plugins() {
-		if ( $plugins_to_activate = Config::get( 'sync.plugins.activate' ) ) {
-			$plugins_to_activate = implode( ' ', $this->get_plugin_slugs( $plugins_to_activate ) );
-			WP_CLI::runcommand( "plugin activate $plugins_to_activate" );
-		}
-
 		WP_CLI::runcommand( 'login install --activate --yes' );
 
+		if ( $plugins_to_activate = Config::get( 'sync.plugins.activate' ) ) {
+			$inactive_plugins = WP_CLI::runcommand( 'plugin list --status=inactive --field=name --format=json', [
+				'return' => true,
+				'parse' => 'json'
+			] );
+			$plugins_to_activate = array_intersect( $inactive_plugins, $plugins_to_activate );
+			if ( empty( $plugins_to_activate ) ) {
+				WP_CLI::log( 'No plugins to activate.' );
+			} else {
+				$plugins_to_activate = implode( ' ', $plugins_to_activate );
+				WP_CLI::log( "Activating plugins: $plugins_to_activate" );
+				WP_CLI::runcommand( "plugin activate $plugins_to_activate" );
+			}
+		}
+
 		if ( $plugins_to_deactivate = Config::get( 'sync.plugins.deactivate' ) ) {
-			$plugins_to_deactivate = implode( ' ', $this->get_plugin_slugs( $plugins_to_deactivate ) );
-			WP_CLI::runcommand( "plugin deactivate $plugins_to_deactivate" );
+			$active_plugins = WP_CLI::runcommand( 'plugin list --status=active --field=name --format=json', [
+				'return' => true,
+				'parse' => 'json'
+			] );
+			$plugins_to_deactivate = array_intersect( $active_plugins, $plugins_to_deactivate );
+			if ( empty( $plugins_to_deactivate ) ) {
+				WP_CLI::log( 'No plugins to deactivate.' );
+			} else {
+				$plugins_to_deactivate = implode( ' ', $plugins_to_deactivate );
+				WP_CLI::log( "Deactivating plugins: $plugins_to_deactivate" );
+				WP_CLI::runcommand( "plugin deactivate $plugins_to_deactivate" );
+			}
 		}
 	}
 
